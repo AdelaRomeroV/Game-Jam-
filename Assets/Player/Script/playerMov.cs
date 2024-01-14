@@ -13,6 +13,10 @@ public class playerMov : MonoBehaviour
     [SerializeField] LayerMask WallLayer;
 
 
+    [Header("Particulas")]
+    [SerializeField] ParticleSystem JumpEffect;
+
+
     [Header("Movement Variables")]
     [SerializeField] float Speed;
     float Horizontal;
@@ -103,6 +107,7 @@ public class playerMov : MonoBehaviour
         if (jumpInput)
         {
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            Instantiate(JumpEffect, transform.position, JumpEffect.transform.rotation);
         }
     }
 

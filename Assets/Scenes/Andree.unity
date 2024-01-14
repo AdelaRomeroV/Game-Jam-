@@ -808,6 +808,7 @@ MonoBehaviour:
   WallLayer:
     serializedVersion: 2
     m_Bits: 64
+  JumpEffect: {fileID: 1777980311457992053, guid: 018acafa02192a4488e41606923f7aad, type: 3}
   Speed: 5
   jumpForce: 14
   wallSlideSpeed: 5
@@ -1230,7 +1231,7 @@ GameObject:
   - component: {fileID: 1555924088}
   - component: {fileID: 1555924087}
   m_Layer: 7
-  m_Name: Square (3)
+  m_Name: enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
