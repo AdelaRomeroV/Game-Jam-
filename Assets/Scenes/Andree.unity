@@ -783,6 +783,7 @@ GameObject:
   - component: {fileID: 1107773120}
   - component: {fileID: 1107773119}
   - component: {fileID: 1107773124}
+  - component: {fileID: 1107773125}
   m_Layer: 0
   m_Name: Robin Hood
   m_TagString: Untagged
@@ -835,7 +836,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 2.5
+  m_GravityScale: 3
   m_Material: {fileID: 6200000, guid: 331eefc4a4b47c94784f7ed1668757cd, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
@@ -979,6 +980,20 @@ MonoBehaviour:
   AttackCheck: {fileID: 291842412}
   AttackRadius: 0.8
   hit: 0
+--- !u!114 &1107773125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107773118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 707ead48371842849a8c98a697fe6d6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxlife: 5
+  currentLife: 0
 --- !u!1 &1114333087
 GameObject:
   m_ObjectHideFlags: 0
@@ -1230,6 +1245,7 @@ GameObject:
   - component: {fileID: 1555924089}
   - component: {fileID: 1555924088}
   - component: {fileID: 1555924087}
+  - component: {fileID: 1555924090}
   m_Layer: 7
   m_Name: enemy
   m_TagString: Untagged
@@ -1349,6 +1365,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1555924090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555924086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00c5183e63544894ebd9d82287ee4d13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxlife: 2
+  currentLife: 0
 --- !u!1 &2019540930
 GameObject:
   m_ObjectHideFlags: 0

@@ -43,7 +43,7 @@ public class PlayerCombat : MonoBehaviour
 
         foreach (Collider2D hit in hitEnemies)
         {
-            Debug.Log("Enemig");
+            hit.GetComponent<EnemyLife>().RecieveDamage();
         }
     }
 }
