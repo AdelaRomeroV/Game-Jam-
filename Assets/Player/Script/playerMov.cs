@@ -41,11 +41,11 @@ public class playerMov : MonoBehaviour
     [Header("Collisions Variables")]
     [SerializeField] Transform groundCheck;
     [SerializeField] Vector2 groundSize;
-    bool onGround() => Physics2D.OverlapBox(groundCheck.position, groundSize, 0, GroundLayer);
+    public bool onGround() => Physics2D.OverlapBox(groundCheck.position, groundSize, 0, GroundLayer);
 
     [SerializeField] Transform wallCheck;
     [SerializeField] float wallRadius;
-    bool isWalled() => Physics2D.OverlapCircle(wallCheck.position, wallRadius, WallLayer);
+    public bool isWalled() => Physics2D.OverlapCircle(wallCheck.position, wallRadius, WallLayer);
 
 
     private void OnDrawGizmos()
