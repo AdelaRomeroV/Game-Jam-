@@ -1,12 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyLife : MonoBehaviour
 {
-    [Header("Particulas")]
-    [SerializeField] ParticleSystem DamageParticle;
-
     [Header("Life Variables")]
     public int maxlife;
     public int currentLife;
@@ -24,9 +19,8 @@ public class EnemyLife : MonoBehaviour
         }
     }
 
-    public void RecieveDamage(float scale)
+    public void RecieveDamage()
     {
-        ParticleSystem parti = Instantiate(DamageParticle, transform.position, DamageParticle.transform.rotation);
         currentLife--;
     }
 }

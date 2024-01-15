@@ -811,7 +811,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   JumpEffect: {fileID: 1777980311457992053, guid: 018acafa02192a4488e41606923f7aad, type: 3}
-  Speed: 5
+  Speed: 3.5
   jumpForce: 14
   wallSlideSpeed: 5
   wallJumpingTime: 0.1
@@ -930,6 +930,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b06314e7b27cf7144b830075b72a3d86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DamageParticles: {fileID: 8639296252201929745, guid: 2d7a7257b738f5145b6cc8c2d3c2db21, type: 3}
   EnemyLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -1360,7 +1361,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.7735849, g: 0.23718406, b: 0.23718406, a: 1}
   m_FlipX: 0
@@ -1394,12 +1395,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1555924086}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 00c5183e63544894ebd9d82287ee4d13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DamageParticle: {fileID: 5852276064644809522, guid: 51153949f4fdb234d8f8a2ce9b252e82, type: 3}
   maxlife: 2
   currentLife: 0
 --- !u!1 &2019540930
@@ -1616,63 +1616,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &5835494394439707924
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5859908023302402175, guid: 51153949f4fdb234d8f8a2ce9b252e82, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.46823168
-      objectReference: {fileID: 0}
-    - target: {fileID: 5859908023302402175, guid: 51153949f4fdb234d8f8a2ce9b252e82, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.11062586
-      objectReference: {fileID: 0}
-    - target: {fileID: 5859908023302402175, guid: 51153949f4fdb234d8f8a2ce9b252e82, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.004
-      objectReference: {fileID: 0}
-    - target: {fileID: 5859908023302402175, guid: 51153949f4fdb234d8f8a2ce9b252e82, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 5859908023302402175, guid: 51153949f4fdb234d8f8a2ce9b252e82, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 5859908023302402175, guid: 51153949f4fdb234d8f8a2ce9b252e82, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5859908023302402175, guid: 51153949f4fdb234d8f8a2ce9b252e82, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5859908023302402175, guid: 51153949f4fdb234d8f8a2ce9b252e82, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 5859908023302402175, guid: 51153949f4fdb234d8f8a2ce9b252e82, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5859908023302402175, guid: 51153949f4fdb234d8f8a2ce9b252e82, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6609997052885521803, guid: 51153949f4fdb234d8f8a2ce9b252e82, type: 3}
-      propertyPath: m_Name
-      value: DamageEffect
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 51153949f4fdb234d8f8a2ce9b252e82, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1688,4 +1631,3 @@ SceneRoots:
   - {fileID: 998003451}
   - {fileID: 579335998}
   - {fileID: 1555924089}
-  - {fileID: 5835494394439707924}

@@ -1,5 +1,4 @@
 using System;
-using UnityEditor;
 using UnityEngine;
 
 public class playerMov : MonoBehaviour
@@ -7,6 +6,7 @@ public class playerMov : MonoBehaviour
     [Header("Components")]
     Rigidbody2D rb;
     Animator animator;
+    PlayerLife life;
 
 
     [Header("Layer")]
@@ -48,7 +48,7 @@ public class playerMov : MonoBehaviour
     [SerializeField] Vector2 groundSize;
     public bool onGround() => Physics2D.OverlapBox(groundCheck.position, groundSize, 0, GroundLayer);
 
-    [SerializeField] Transform wallCheck;
+    [SerializeField] public Transform wallCheck;
     [SerializeField] float wallRadius;
     public bool isWalled() => Physics2D.OverlapCircle(wallCheck.position, wallRadius, WallLayer);
 
@@ -56,7 +56,6 @@ public class playerMov : MonoBehaviour
     [Header("Animaciones")]
     float horizontal_ANIM;
     string JUMP_ANIM = "PlayerJump";
-    string FALL_ANIM = "PlayerFall";
 
 
 
@@ -71,6 +70,7 @@ public class playerMov : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        life = GetComponent<PlayerLife>();
     }
 
     void Animations()
@@ -84,21 +84,27 @@ public class playerMov : MonoBehaviour
     {
         Horizontal = Input.GetAxisRaw("Horizontal");
 
-        if (!isWallSliding && !isWallJumping)
+        if (life.isAlive)
         {
-            Flip();
+            if (!isWallSliding && !isWallJumping)
+            {
+                Flip();
+            }
+
+            Jump();
+            WallSlide();
+            WallJump();
+
+            Animations();
         }
-
-        Jump();
-        WallSlide();
-        WallJump();
-
-        Animations();
     }
 
     private void FixedUpdate()
     {
-        Movement();
+        if (life.isAlive)
+        {
+            Movement();
+        }
     }
 
     void Movement()

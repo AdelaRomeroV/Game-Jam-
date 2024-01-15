@@ -1,11 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
-using TreeEditor;
 using UnityEngine;
 
 public class PlayerCombat : MonoBehaviour
 {
     playerMov mov;
+    PlayerLife life;
+
+    [Header("Particles")]
+    [SerializeField] ParticleSystem DamageParticles;
 
     [Header("Layers")]
     [SerializeField] LayerMask EnemyLayer;
@@ -26,15 +27,18 @@ public class PlayerCombat : MonoBehaviour
     private void Awake()
     {
         mov = GetComponent<playerMov>();
+        life = GetComponent<PlayerLife>();
     }
 
     private void Update()
     {
-        
-        if (Input.GetKeyDown(KeyCode.Mouse0) && canAttack && mov.onGround() && !mov.isWallSliding && !mov.isWallJumping)
+        if(life.isAlive)
         {
-            Attack();
-        }
+            if (Input.GetKeyDown(KeyCode.Mouse0) && canAttack && mov.onGround() && !mov.isWallSliding && !mov.isWallJumping)
+            {
+                Attack();
+            }
+        } 
     }
 
     void Attack()
@@ -43,7 +47,12 @@ public class PlayerCombat : MonoBehaviour
 
         foreach (Collider2D hit in hitEnemies)
         {
-            hit.GetComponent<EnemyLife>().RecieveDamage(transform.localScale.x);
+            ParticleSystem parti = Instantiate(DamageParticles, hit.transform.position, DamageParticles.transform.rotation);
+            Vector2 orientacion = transform.localScale;
+            parti.transform.localScale = orientacion;
+
+
+            hit.GetComponent<EnemyLife>().RecieveDamage();
         }
     }
 }
