@@ -6,6 +6,7 @@ public class playerMov : MonoBehaviour
 {
     [Header("Components")]
     Rigidbody2D rb;
+    Animator animator;
 
 
     [Header("Layer")]
@@ -19,7 +20,7 @@ public class playerMov : MonoBehaviour
 
     [Header("Movement Variables")]
     [SerializeField] float Speed;
-    float Horizontal;
+    [NonSerialized] public float Horizontal;
     bool isFacingRight = true;
 
 
@@ -52,6 +53,13 @@ public class playerMov : MonoBehaviour
     public bool isWalled() => Physics2D.OverlapCircle(wallCheck.position, wallRadius, WallLayer);
 
 
+    [Header("Animaciones")]
+    float horizontal_ANIM;
+    string JUMP_ANIM = "PlayerJump";
+    string FALL_ANIM = "PlayerFall";
+
+
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
@@ -62,6 +70,14 @@ public class playerMov : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+    }
+
+    void Animations()
+    {
+        if(Horizontal != 0) horizontal_ANIM = 1; else horizontal_ANIM = 0;
+        animator.SetFloat("Horizontal", horizontal_ANIM);
+        animator.SetBool("onGround", onGround());
     }
 
     private void Update()
@@ -76,6 +92,8 @@ public class playerMov : MonoBehaviour
         Jump();
         WallSlide();
         WallJump();
+
+        Animations();
     }
 
     private void FixedUpdate()
@@ -106,6 +124,8 @@ public class playerMov : MonoBehaviour
     {
         if (jumpInput)
         {
+            animator.Play(JUMP_ANIM);
+
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             Instantiate(JumpEffect, transform.position, JumpEffect.transform.rotation);
         }
@@ -143,6 +163,8 @@ public class playerMov : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && wallJumpingCounter > 0)
         {
+            animator.Play(JUMP_ANIM);
+
             isWallJumping = true;
             rb.velocity = new Vector2(wallJumpingDirection * wallJumpingPower.x, wallJumpingPower.y);
             wallJumpingCounter = 0;
