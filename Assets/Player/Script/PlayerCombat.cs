@@ -43,7 +43,7 @@ public class PlayerCombat : MonoBehaviour
 
         foreach (Collider2D hit in hitEnemies)
         {
-            hit.GetComponent<EnemyLife>().RecieveDamage();
+            hit.GetComponent<EnemyLife>().RecieveDamage(transform.localScale.x);
         }
     }
 }
