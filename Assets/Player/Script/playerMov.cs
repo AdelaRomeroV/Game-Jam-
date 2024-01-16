@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class playerMov : MonoBehaviour
@@ -12,6 +14,7 @@ public class playerMov : MonoBehaviour
     [Header("Layer")]
     [SerializeField] LayerMask GroundLayer;
     [SerializeField] LayerMask WallLayer;
+    [SerializeField] LayerMask LedgeLayer;
 
 
     [Header("Particulas")]
@@ -21,7 +24,11 @@ public class playerMov : MonoBehaviour
     [Header("Movement Variables")]
     [SerializeField] float Speed;
     [NonSerialized] public float Horizontal;
+    [NonSerialized] public float vertical;
+    float actualGravity;
+    bool canMove = true;
     bool isFacingRight = true;
+    bool canFlip = true;
 
 
     [Header("Jump Variables")]
@@ -52,6 +59,16 @@ public class playerMov : MonoBehaviour
     [SerializeField] float wallRadius;
     public bool isWalled() => Physics2D.OverlapCircle(wallCheck.position, wallRadius, WallLayer);
 
+    [Header("LedgeGrab Collision Variables")]
+    [SerializeField] Vector2 LedgeCollidersSize;
+    [NonSerialized] public bool isGrabing;
+    [NonSerialized] public bool ledgeRising;
+    Vector2 currentSize;
+    bool GreenCollider() => Physics2D.OverlapBox(new Vector2(wallCheck.position.x, wallCheck.position.y + greenOffset), LedgeCollidersSize, 0, LedgeLayer);
+    [SerializeField] float greenOffset;
+    bool redCollider() => Physics2D.OverlapBox(new Vector2(wallCheck.position.x, wallCheck.position.y + redOffset), LedgeCollidersSize, 0, LedgeLayer);
+    [SerializeField] float redOffset;
+
 
     [Header("Animaciones")]
     float horizontal_ANIM;
@@ -64,6 +81,12 @@ public class playerMov : MonoBehaviour
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireCube(groundCheck.position, groundSize);
         Gizmos.DrawWireSphere(wallCheck.position, wallRadius);
+
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireCube(new Vector2(wallCheck.position.x, wallCheck.position.y + greenOffset), LedgeCollidersSize);
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(new Vector2(wallCheck.position.x, wallCheck.position.y + redOffset), LedgeCollidersSize);
     }
 
     private void Awake()
@@ -71,6 +94,8 @@ public class playerMov : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         life = GetComponent<PlayerLife>();
+        actualGravity = rb.gravityScale;
+        currentSize = LedgeCollidersSize;
     }
 
     void Animations()
@@ -83,6 +108,7 @@ public class playerMov : MonoBehaviour
     private void Update()
     {
         Horizontal = Input.GetAxisRaw("Horizontal");
+        vertical = Input.GetAxisRaw("Vertical");
 
         if (life.isAlive)
         {
@@ -94,6 +120,7 @@ public class playerMov : MonoBehaviour
             Jump();
             WallSlide();
             WallJump();
+            LedgeGrab();
 
             Animations();
         }
@@ -101,7 +128,7 @@ public class playerMov : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (life.isAlive)
+        if (life.isAlive && canMove)
         {
             Movement();
         }
@@ -109,7 +136,7 @@ public class playerMov : MonoBehaviour
 
     void Movement()
     {
-        if (!isWallJumping)
+        if (!isWallJumping && canMove)
         {
             rb.velocity = new Vector2(Horizontal * Speed * Time.deltaTime * 100, rb.velocity.y);
         }
@@ -117,12 +144,15 @@ public class playerMov : MonoBehaviour
 
     void Flip()
     {
-        if(isFacingRight && Horizontal < 0 || !isFacingRight && Horizontal > 0)
+        if (canFlip)
         {
-            isFacingRight = !isFacingRight;
-            Vector2 scale = transform.localScale;
-            scale.x *= -1;
-            transform.localScale = scale;
+            if(isFacingRight && Horizontal < 0 || !isFacingRight && Horizontal > 0)
+            {
+                isFacingRight = !isFacingRight;
+                Vector2 scale = transform.localScale;
+                scale.x *= -1;
+                transform.localScale = scale;
+            }
         }
     }
 
@@ -139,7 +169,7 @@ public class playerMov : MonoBehaviour
 
     private void WallSlide()
     {
-        if (isWalled() && !onGround() && Horizontal != 0)
+        if (isWalled() && !onGround() && Horizontal != 0 && !isGrabing)
         {
             isWallSliding = true;
             rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -wallSlideSpeed, float.MaxValue));
@@ -191,5 +221,59 @@ public class playerMov : MonoBehaviour
     private void StopWallJump()
     {
         isWallJumping = false;
+    }
+
+    void LedgeGrab()
+    {
+        if (LedgeCollidersSize == new Vector2(0f, 0f)) isGrabing = false;
+        else if (GreenCollider() && !redCollider() && !isGrabing && !onGround()) isGrabing = true;
+
+        if (isGrabing)
+        {
+            rb.velocity = new Vector2(0, 0);
+            rb.gravityScale = 0;
+
+            if (vertical > 0 && ledgeRise() != null || Input.GetButtonDown("Jump"))
+            {
+                StartCoroutine(ledgeRise());
+            }
+            else if (vertical < 0 && ledgeFall() != null)
+            {
+                StartCoroutine(ledgeFall());
+            }
+        }
+    }
+
+    private IEnumerator ledgeRise()
+    {
+        ledgeRising = true;
+        isGrabing = false;
+        canMove = false;
+        canFlip = false;
+
+        rb.gravityScale = actualGravity;
+
+        transform.position = new Vector2(transform.position.x + transform.localScale.x * 1f, transform.position.y + 1f);
+        rb.velocity = Vector2.zero;
+
+        yield return new WaitForSeconds(0.5f);
+
+        ledgeRising = false;
+        canFlip = true;
+        canMove = true;
+    }
+
+    private IEnumerator ledgeFall()
+    {
+        canMove = true;
+        canFlip = true;
+        isGrabing = false;
+        LedgeCollidersSize = Vector2.zero;
+
+        rb.gravityScale = actualGravity;
+
+        yield return new WaitForSeconds(1f);
+
+        LedgeCollidersSize = currentSize;
     }
 }
