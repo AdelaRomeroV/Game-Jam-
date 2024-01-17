@@ -232,6 +232,8 @@ public class playerMov : MonoBehaviour
         {
             rb.velocity = new Vector2(0, 0);
             rb.gravityScale = 0;
+            canMove = false;
+            canFlip = false;
 
             if (vertical > 0 && ledgeRise() != null || Input.GetButtonDown("Jump"))
             {
