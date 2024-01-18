@@ -113,19 +113,19 @@ TextureImporter:
       name: wallSlide-sheet_0
       rect:
         serializedVersion: 2
-        x: 1
+        x: 0
         y: 0
-        width: 16
+        width: 18
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2b9d8aeb08afeb546b9e86b3e28c6845
-      internalID: 1547170570
+      spriteID: 0b31a82d14ec9254596686700e4f230e
+      internalID: 524640296
       vertices: []
       indices: 
       edges: []
@@ -134,19 +134,61 @@ TextureImporter:
       name: wallSlide-sheet_1
       rect:
         serializedVersion: 2
-        x: 19
+        x: 18
         y: 0
-        width: 16
+        width: 18
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3fd160f51a3ec6a438917ef44b13f9a1
-      internalID: -2147346579
+      spriteID: 77788ccb829622b4490594c8b8d6fe08
+      internalID: -1260811460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wallSlide-sheet_2
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 0
+        width: 18
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9eda97e5617b42448824e9bad0ba643
+      internalID: 165906279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wallSlide-sheet_3
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 0
+        width: 18
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ccf6fdccffb988488637e788858ec3c
+      internalID: 1145496636
       vertices: []
       indices: 
       edges: []
@@ -162,8 +204,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      wallSlide-sheet_0: 1547170570
-      wallSlide-sheet_1: -2147346579
+      wallSlide-sheet_0: 524640296
+      wallSlide-sheet_1: -1260811460
+      wallSlide-sheet_2: 165906279
+      wallSlide-sheet_3: 1145496636
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
