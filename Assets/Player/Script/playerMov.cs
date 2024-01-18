@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Unity.Burst.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -7,8 +8,8 @@ public class playerMov : MonoBehaviour
 {
     [Header("Components")]
     [SerializeField] Rigidbody2D rb;
-    [SerializeField] GameObject scaledObject;
-    Animator animator;
+    [SerializeField] public GameObject scaledObject;
+    [HideInInspector] public Animator animator;
     [SerializeField] PlayerLife life;
 
 
@@ -20,6 +21,7 @@ public class playerMov : MonoBehaviour
 
     [Header("Particulas")]
     [SerializeField] ParticleSystem JumpEffect;
+    [SerializeField] ParticleSystem WallJumpEffect;
 
 
     [Header("Movement Variables")]
@@ -101,6 +103,8 @@ public class playerMov : MonoBehaviour
         if(Horizontal != 0) horizontal_ANIM = 1; else horizontal_ANIM = 0;
         animator.SetFloat("Horizontal", horizontal_ANIM);
         animator.SetBool("onGround", onGround());
+        animator.SetBool("isWalled", isWallSliding || isGrabing);
+        animator.SetBool("isWallJumping", isWallJumping);
     }
 
     private void Update()
@@ -198,6 +202,10 @@ public class playerMov : MonoBehaviour
         if (Input.GetButtonDown("Jump") && wallJumpingCounter > 0)
         {
             animator.Play(JUMP_ANIM);
+
+            ParticleSystem parti = Instantiate(WallJumpEffect, wallCheck.transform.position, WallJumpEffect.transform.rotation);
+            Vector2 orientacion = scaledObject.transform.localScale;
+            parti.transform.localScale = orientacion;
 
             isWallJumping = true;
             rb.velocity = new Vector2(wallJumpingDirection * wallJumpingPower.x, wallJumpingPower.y);

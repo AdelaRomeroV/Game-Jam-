@@ -45,10 +45,12 @@ public class PlayerCombat : MonoBehaviour
     {
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(new Vector2(AttackCheck.position.x + 0.5f * transform.localScale.x, AttackCheck.position.y), AttackRadius, EnemyLayer);
 
+        mov.animator.Play("PlayerAttack");
+
         foreach (Collider2D hit in hitEnemies)
         {
             ParticleSystem parti = Instantiate(DamageParticles, hit.transform.position, DamageParticles.transform.rotation);
-            Vector2 orientacion = transform.localScale;
+            Vector2 orientacion = mov.scaledObject.transform.localScale;
             parti.transform.localScale = orientacion;
 
 

@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: -2125228274, guid: 6576f31061730f44391bec6868d334e3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -117,7 +117,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 163780853671800244}
-  - component: {fileID: 535004934412233118}
   - component: {fileID: 1206701427056573603}
   - component: {fileID: 1722292270606655690}
   - component: {fileID: 340723957114914418}
@@ -148,27 +147,6 @@ Transform:
   - {fileID: 893166678668898506}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &535004934412233118
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2438231864383438458}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4f9bf03509f305e4d83bd188e80b3ca7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!61 &1206701427056573603
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -255,6 +233,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 1722292270606655690}
   scaledObject: {fileID: 867705036480228402}
+  animator: {fileID: 0}
   life: {fileID: 7900641487053095682}
   GroundLayer:
     serializedVersion: 2
@@ -278,7 +257,7 @@ MonoBehaviour:
   groundSize: {x: 0.65, y: 0.2}
   wallCheck: {fileID: 7043883629727896513}
   wallRadius: 0.4
-  LedgeCollidersSize: {x: 0.5, y: 0.2}
+  LedgeCollidersSize: {x: 0.15, y: 0.2}
   greenOffset: 0.4
   redOffset: 0.6
 --- !u!114 &2303060479129190665
@@ -332,7 +311,7 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 39.949867
+  m_Distance: 23.01254
   m_DampingRatio: 1
   m_Frequency: 1
 --- !u!1 &2845049264075468552

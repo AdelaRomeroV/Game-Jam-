@@ -12136,7 +12136,7 @@ CompositeCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -24668,6 +24668,18 @@ PrefabInstance:
     - target: {fileID: 163780853671800244, guid: 31aeda64011c35a43b422ca310e97859, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 340723957114914418, guid: 31aeda64011c35a43b422ca310e97859, type: 3}
+      propertyPath: WallJumpEffect
+      value: 
+      objectReference: {fileID: 6852095606782592107, guid: 9439606b177b68c49948118dcf519526, type: 3}
+    - target: {fileID: 1206701427056573603, guid: 31aeda64011c35a43b422ca310e97859, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1206701427056573603, guid: 31aeda64011c35a43b422ca310e97859, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1887285914659095052, guid: 31aeda64011c35a43b422ca310e97859, type: 3}
       propertyPath: m_Distance
