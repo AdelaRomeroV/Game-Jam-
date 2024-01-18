@@ -758,7 +758,7 @@ GameObject:
   - component: {fileID: 528454069}
   - component: {fileID: 528454071}
   - component: {fileID: 528454070}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CameraConfinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -774,7 +774,7 @@ Transform:
   m_GameObject: {fileID: 528454067}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 6.83}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -24669,13 +24669,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 340723957114914418, guid: 31aeda64011c35a43b422ca310e97859, type: 3}
-      propertyPath: wallSlideSpeed
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 1887285914659095052, guid: 31aeda64011c35a43b422ca310e97859, type: 3}
       propertyPath: m_Distance
-      value: 37.999664
+      value: 39.949867
       objectReference: {fileID: 0}
     - target: {fileID: 2438231864383438458, guid: 31aeda64011c35a43b422ca310e97859, type: 3}
       propertyPath: m_Name
@@ -24685,6 +24681,10 @@ PrefabInstance:
       propertyPath: m_camera
       value: 
       objectReference: {fileID: 1570602171}
+    - target: {fileID: 3156675146571841660, guid: 31aeda64011c35a43b422ca310e97859, type: 3}
+      propertyPath: grappleToAll
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

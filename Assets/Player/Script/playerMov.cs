@@ -26,8 +26,8 @@ public class playerMov : MonoBehaviour
     [SerializeField] float Speed;
     [NonSerialized] public float Horizontal;
     [NonSerialized] public float vertical;
+    [HideInInspector] public bool canMove = true;
     float actualGravity;
-    bool canMove = true;
     bool isFacingRight = true;
     bool canFlip = true;
 

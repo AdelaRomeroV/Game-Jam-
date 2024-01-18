@@ -6,8 +6,7 @@ public class GrappleGun : MonoBehaviour
     public GrappleRope grappleRope;
 
     [Header("Layers Settings:")]
-    [SerializeField] private bool grappleToAll = false;
-    [SerializeField] private int grappableLayerNumber = 9;
+    [SerializeField] LayerMask grappleLayers;
 
     [Header("Main Camera:")]
     public Camera m_camera;
@@ -117,8 +116,8 @@ public class GrappleGun : MonoBehaviour
         Vector2 distanceVector = m_camera.ScreenToWorldPoint(Input.mousePosition) - gunPivot.position;
         if (Physics2D.Raycast(firePoint.position, distanceVector.normalized))
         {
-            RaycastHit2D _hit = Physics2D.Raycast(firePoint.position, distanceVector.normalized);
-            if (_hit.transform.gameObject.layer == grappableLayerNumber || grappleToAll)
+            RaycastHit2D _hit = Physics2D.Raycast(firePoint.position, distanceVector.normalized, maxDistnace, grappleLayers);
+            if (_hit.collider != null)
             {
                 if (Vector2.Distance(_hit.point, firePoint.position) <= maxDistnace || !hasMaxDistance)
                 {
@@ -163,7 +162,7 @@ public class GrappleGun : MonoBehaviour
                     m_springJoint2D.enabled = true;
                     break;
                 case LaunchType.Transform_Launch:
-                    m_rigidbody.gravityScale = 0;
+                    m_rigidbody.gravityScale = CurrentGravity * 0.2f;
                     m_rigidbody.velocity = Vector2.zero;
                     break;
             }

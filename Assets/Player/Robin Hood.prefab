@@ -267,8 +267,9 @@ MonoBehaviour:
     m_Bits: 512
   JumpEffect: {fileID: 1777980311457992053, guid: 018acafa02192a4488e41606923f7aad, type: 3}
   Speed: 3.5
+  canMove: 1
   jumpForce: 12
-  wallSlideSpeed: 5
+  wallSlideSpeed: 2
   wallJumpingTime: 0.05
   wallJumpingDuration: 0.1
   wallJumpingPower: {x: 14, y: 12}
@@ -479,8 +480,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grappleRope: {fileID: 6315963776838828650}
-  grappleToAll: 1
-  grappableLayerNumber: 9
+  movement: {fileID: 340723957114914418}
+  grappleLayers:
+    serializedVersion: 2
+    m_Bits: 768
   m_camera: {fileID: 0}
   gunHolder: {fileID: 163780853671800244}
   gunPivot: {fileID: 893166678668898506}
@@ -718,15 +721,15 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 1.2400762
-      outSlope: 1.2400762
+      inSlope: 2.5013878
+      outSlope: 2.5013878
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.11611989
-      value: 0.1439975
+      time: 0.11145615
+      value: 0.27879506
       inSlope: -0.73328996
       outSlope: -0.73328996
       tangentMode: 0
@@ -734,8 +737,8 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.10797249
     - serializedVersion: 3
-      time: 0.2532926
-      value: -0.13182084
+      time: 0.3675504
+      value: -0.22404496
       inSlope: -0.090100385
       outSlope: -0.090100385
       tangentMode: 0
@@ -743,8 +746,8 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.16854624
     - serializedVersion: 3
-      time: 0.5338446
-      value: 0.10912346
+      time: 0.65045226
+      value: 0.13277459
       inSlope: 0.14135537
       outSlope: 0.14135537
       tangentMode: 0
@@ -752,8 +755,8 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.7304921
-      value: -0.033255845
+      time: 0.8470998
+      value: -0.06398705
       inSlope: 0.031085545
       outSlope: 0.031085545
       tangentMode: 0
@@ -763,8 +766,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: 0.123394705
-      outSlope: 0.123394705
+      inSlope: 0.41848892
+      outSlope: 0.41848892
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -779,8 +782,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 2
-      outSlope: 2
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -788,8 +791,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 0
-      outSlope: 0
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
