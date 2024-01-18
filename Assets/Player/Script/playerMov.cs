@@ -6,9 +6,10 @@ using UnityEngine;
 public class playerMov : MonoBehaviour
 {
     [Header("Components")]
-    Rigidbody2D rb;
+    [SerializeField] Rigidbody2D rb;
+    [SerializeField] GameObject scaledObject;
     Animator animator;
-    PlayerLife life;
+    [SerializeField] PlayerLife life;
 
 
     [Header("Layer")]
@@ -75,7 +76,6 @@ public class playerMov : MonoBehaviour
     string JUMP_ANIM = "PlayerJump";
 
 
-
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
@@ -91,9 +91,7 @@ public class playerMov : MonoBehaviour
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
-        life = GetComponent<PlayerLife>();
+        animator = scaledObject.GetComponent<Animator>();
         actualGravity = rb.gravityScale;
         currentSize = LedgeCollidersSize;
     }
@@ -149,9 +147,9 @@ public class playerMov : MonoBehaviour
             if(isFacingRight && Horizontal < 0 || !isFacingRight && Horizontal > 0)
             {
                 isFacingRight = !isFacingRight;
-                Vector2 scale = transform.localScale;
+                Vector2 scale = scaledObject.transform.localScale;
                 scale.x *= -1;
-                transform.localScale = scale;
+                scaledObject.transform.localScale = scale;
             }
         }
     }
@@ -188,7 +186,7 @@ public class playerMov : MonoBehaviour
             wallJumpingCounter = wallJumpingTime;
 
             if (isWalled())
-                wallJumpingDirection = -transform.localScale.x;
+                wallJumpingDirection = -scaledObject.transform.localScale.x;
 
             CancelInvoke(nameof(StopWallJump));
         }
@@ -205,12 +203,12 @@ public class playerMov : MonoBehaviour
             rb.velocity = new Vector2(wallJumpingDirection * wallJumpingPower.x, wallJumpingPower.y);
             wallJumpingCounter = 0;
 
-            if (transform.localScale.x != wallJumpingDirection)
+            if (scaledObject.transform.localScale.x != wallJumpingDirection)
             {
                 isFacingRight = !isFacingRight;
-                Vector3 escala = transform.localScale;
+                Vector3 escala = scaledObject.transform.localScale;
                 escala.x *= -1;
-                transform.localScale = escala;
+                scaledObject.transform.localScale = escala;
             }
 
             Invoke(nameof(StopWallJump), wallJumpingDuration);
@@ -255,7 +253,7 @@ public class playerMov : MonoBehaviour
 
         rb.gravityScale = actualGravity;
 
-        transform.position = new Vector2(transform.position.x + transform.localScale.x * 1f, transform.position.y + 1f);
+        transform.position = new Vector2(scaledObject.transform.position.x + scaledObject.transform.localScale.x * 1f, scaledObject.transform.position.y + 1f);
         rb.velocity = Vector2.zero;
 
         yield return new WaitForSeconds(0.5f);
