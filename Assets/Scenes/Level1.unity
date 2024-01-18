@@ -24685,6 +24685,14 @@ PrefabInstance:
       propertyPath: grappleToAll
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6315963776838828650, guid: 31aeda64011c35a43b422ca310e97859, type: 3}
+      propertyPath: ropeProgressionCurve.m_Curve.Array.data[1].inSlope
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6315963776838828650, guid: 31aeda64011c35a43b422ca310e97859, type: 3}
+      propertyPath: ropeProgressionCurve.m_Curve.Array.data[1].outSlope
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
