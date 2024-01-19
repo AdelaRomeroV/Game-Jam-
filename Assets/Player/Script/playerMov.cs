@@ -9,6 +9,7 @@ public class playerMov : MonoBehaviour
     [SerializeField] public GameObject scaledObject;
     [HideInInspector] public Animator animator;
     [SerializeField] PlayerLife life;
+    [SerializeField] GrappleGun gun;
 
 
     [Header("Layer")]
@@ -109,6 +110,7 @@ public class playerMov : MonoBehaviour
     {
         Horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
+
 
         if (life.isAlive)
         {
@@ -230,7 +232,7 @@ public class playerMov : MonoBehaviour
     void LedgeGrab()
     {
         if (LedgeCollidersSize == new Vector2(0f, 0f)) isGrabing = false;
-        else if (GreenCollider() && !redCollider() && !isGrabing && !onGround()) isGrabing = true;
+        else if (GreenCollider() && !redCollider() && !isGrabing && !onGround() && !gun.grappleRope.enabled) isGrabing = true;
 
         if (isGrabing)
         {
@@ -269,7 +271,7 @@ public class playerMov : MonoBehaviour
         canMove = true;
     }
 
-    private IEnumerator ledgeFall()
+    public IEnumerator ledgeFall()
     {
         canMove = true;
         canFlip = true;

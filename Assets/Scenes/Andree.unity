@@ -2156,6 +2156,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 866228285}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1031765466 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3156675146571841660, guid: 31aeda64011c35a43b422ca310e97859, type: 3}
+  m_PrefabInstance: {fileID: 2503886043336519040}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e949eee3916ddbc429835c4ca6bf6faf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1045714367
 GameObject:
   m_ObjectHideFlags: 0
@@ -2168,7 +2179,7 @@ GameObject:
   - component: {fileID: 1045714370}
   - component: {fileID: 1045714369}
   - component: {fileID: 1045714368}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2319,6 +2330,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 163780853671800244, guid: 31aeda64011c35a43b422ca310e97859, type: 3}
   m_PrefabInstance: {fileID: 2503886043336519040}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1107773127 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 340723957114914418, guid: 31aeda64011c35a43b422ca310e97859, type: 3}
+  m_PrefabInstance: {fileID: 2503886043336519040}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1eb8dfe776a8b3843ade138b9e4176e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1114333087
 GameObject:
   m_ObjectHideFlags: 0
@@ -3695,14 +3717,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 340723957114914418, guid: 31aeda64011c35a43b422ca310e97859, type: 3}
+      propertyPath: gun
+      value: 
+      objectReference: {fileID: 1031765466}
+    - target: {fileID: 340723957114914418, guid: 31aeda64011c35a43b422ca310e97859, type: 3}
+      propertyPath: GroundLayer.m_Bits
+      value: 264
+      objectReference: {fileID: 0}
     - target: {fileID: 2438231864383438458, guid: 31aeda64011c35a43b422ca310e97859, type: 3}
       propertyPath: m_Name
       value: Robin Hood
       objectReference: {fileID: 0}
     - target: {fileID: 3156675146571841660, guid: 31aeda64011c35a43b422ca310e97859, type: 3}
+      propertyPath: mov
+      value: 
+      objectReference: {fileID: 1107773127}
+    - target: {fileID: 3156675146571841660, guid: 31aeda64011c35a43b422ca310e97859, type: 3}
       propertyPath: m_camera
       value: 
       objectReference: {fileID: 615421019}
+    - target: {fileID: 3156675146571841660, guid: 31aeda64011c35a43b422ca310e97859, type: 3}
+      propertyPath: grappleLayers.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 3156675146571841660, guid: 31aeda64011c35a43b422ca310e97859, type: 3}
+      propertyPath: collisionLayers.m_Bits
+      value: 584
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
