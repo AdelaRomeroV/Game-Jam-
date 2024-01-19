@@ -1,7 +1,5 @@
 using System;
 using System.Collections;
-using Unity.Burst.CompilerServices;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class playerMov : MonoBehaviour
@@ -264,7 +262,7 @@ public class playerMov : MonoBehaviour
         transform.position = new Vector2(scaledObject.transform.position.x + scaledObject.transform.localScale.x * 1f, scaledObject.transform.position.y + 1f);
         rb.velocity = Vector2.zero;
 
-        yield return new WaitForSeconds(0.5f);
+        yield return null;
 
         ledgeRising = false;
         canFlip = true;

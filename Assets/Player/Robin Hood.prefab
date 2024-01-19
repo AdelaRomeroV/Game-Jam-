@@ -245,10 +245,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   JumpEffect: {fileID: 1777980311457992053, guid: 018acafa02192a4488e41606923f7aad, type: 3}
+  WallJumpEffect: {fileID: 6852095606782592107, guid: 9439606b177b68c49948118dcf519526, type: 3}
   Speed: 3
   canMove: 1
   jumpForce: 12
-  wallSlideSpeed: 2
+  wallSlideSpeed: 1
   wallJumpingTime: 0.05
   wallJumpingDuration: 0.1
   wallJumpingPower: {x: 14, y: 12}
@@ -772,8 +773,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 0
-      outSlope: 0
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
