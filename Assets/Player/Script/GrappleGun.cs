@@ -102,9 +102,14 @@ public class GrappleGun : MonoBehaviour
                 if (launchToPoint && grappleRope.isGrappling)
                 {
                     grapplePoint = _hit.point;
-                    Vector2 firePointDistnace = Object.position - gunHolder.localPosition;
-                    Vector2 targetPos = grapplePoint - firePointDistnace;
-                    Object.position = Vector2.Lerp(Object.position, targetPos, Time.deltaTime * launchSpeed / (rgb.mass*1.5f));
+
+                    if(Vector2.Distance(firePoint.position, Object.position) >= 2)
+                    {
+                        Vector2 firePointDistnace = Object.position - gunHolder.localPosition;
+                        Vector2 targetPos = (Vector2)firePoint.position - firePointDistnace;
+                        Object.position = Vector2.Lerp(Object.position, targetPos, Time.deltaTime * launchSpeed / (rgb.mass * 1.5f));
+
+                    }
                 }
             }
         }
