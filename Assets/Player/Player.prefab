@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 7900641487053095682}
   - component: {fileID: 1887285914659095052}
   m_Layer: 10
-  m_Name: Robin Hood
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -179,18 +179,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.04671395, y: 0.016147912}
+  m_Offset: {x: -0.04671395, y: 0.026816666}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 3, y: 1}
+    newSize: {x: 3, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6912818, y: 0.93926966}
+  m_Size: {x: 0.6912818, y: 0.91793215}
   m_EdgeRadius: 0
 --- !u!50 &1722292270606655690
 Rigidbody2D:
@@ -217,7 +217,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &340723957114914418
 MonoBehaviour:
@@ -235,9 +235,11 @@ MonoBehaviour:
   scaledObject: {fileID: 867705036480228402}
   animator: {fileID: 0}
   life: {fileID: 7900641487053095682}
+  gun: {fileID: 3156675146571841660}
+  rope: {fileID: 6315963776838828650}
   GroundLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 264
   WallLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -312,7 +314,7 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 23.01254
+  m_Distance: 38.56398
   m_DampingRatio: 1
   m_Frequency: 1
 --- !u!1 &2845049264075468552
@@ -460,13 +462,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grappleRope: {fileID: 6315963776838828650}
+  mov: {fileID: 340723957114914418}
   grappleLayers:
     serializedVersion: 2
-    m_Bits: 768
+    m_Bits: 256
   collisionLayers:
     serializedVersion: 2
     m_Bits: 840
   m_camera: {fileID: 0}
+  pullObject: 0
+  pullPlayer: 0
+  Object: {fileID: 0}
   gunHolder: {fileID: 163780853671800244}
   gunPivot: {fileID: 893166678668898506}
   firePoint: {fileID: 4936347705914178841}

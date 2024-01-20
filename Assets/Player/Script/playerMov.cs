@@ -10,6 +10,7 @@ public class playerMov : MonoBehaviour
     [HideInInspector] public Animator animator;
     [SerializeField] PlayerLife life;
     [SerializeField] GrappleGun gun;
+    [SerializeField] GrappleRope rope;
 
 
     [Header("Layer")]
@@ -35,6 +36,7 @@ public class playerMov : MonoBehaviour
 
     [Header("Jump Variables")]
     [SerializeField] float jumpForce;
+    [HideInInspector] public bool canJump = true;
     bool jumpInput => Input.GetButtonDown("Jump") && onGround();
 
 
@@ -160,7 +162,7 @@ public class playerMov : MonoBehaviour
 
     void Jump()
     {
-        if (jumpInput)
+        if (jumpInput && canJump)
         {
             animator.Play(JUMP_ANIM);
 
