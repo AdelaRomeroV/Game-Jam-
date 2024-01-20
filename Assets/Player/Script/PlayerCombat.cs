@@ -5,6 +5,7 @@ public class PlayerCombat : MonoBehaviour
 {
     playerMov mov;
     PlayerLife life;
+    [SerializeField] Transform scaledObject;
 
     [Header("Particles")]
     [SerializeField] ParticleSystem DamageParticles;
@@ -22,7 +23,7 @@ public class PlayerCombat : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(new Vector2(AttackCheck.position.x + 0.5f * transform.localScale.x, AttackCheck.position.y), AttackRadius);
+        Gizmos.DrawWireSphere(new Vector2(AttackCheck.position.x + 0.5f * scaledObject.transform.localScale.x, AttackCheck.position.y), AttackRadius);
     }
 
     private void Awake()
