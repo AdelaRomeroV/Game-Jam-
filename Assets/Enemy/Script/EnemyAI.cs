@@ -12,6 +12,7 @@ public class EnemyAI : MonoBehaviour
     EnemyLife m_EnemyLife;
     Rigidbody2D rb;
     GameObject m_Target;
+    Animator m_anim;
 
     [Header("Movement Values:")]
     [SerializeField] float Speed;
@@ -23,7 +24,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] float AtkRadius;
     [SerializeField] float AtkDelay;
     public bool isAttacking;
-    public bool canAttack;
+    public bool canAttack = true;
     public bool Hitting;
 
     [Header("Collision Variables")]
@@ -32,6 +33,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] Vector2 wallCheck;
     [SerializeField] Vector2 groundCheck;
     [SerializeField] Transform AtkTransform;
+    bool PlayerInArea() => Physics2D.OverlapCircle(AtkTransform.position, AtkRadius, Player);
 
     private void Awake()
     {
@@ -39,7 +41,7 @@ public class EnemyAI : MonoBehaviour
         m_EnemyLife = GetComponent<EnemyLife>();
         rb = GetComponent<Rigidbody2D>();
         m_Target = GameObject.Find("Player");
-
+        m_anim = GetComponent<Animator>();
     }
 
     private void OnDrawGizmos()
@@ -58,8 +60,22 @@ public class EnemyAI : MonoBehaviour
     {
         if(!isAttacking) Walk();
 
-        if(Vector2.Distance(transform.position, m_Target.transform.position) < 2f)
+        if(Vector2.Distance(transform.position, m_Target.transform.position) <= 0.5f)
         {
+            Vector2 dir = transform.position - m_Target.transform.position;
+            if(dir.x > 0)
+            {
+                Xdirection = -1;
+                Vector2 scale = new Vector2(Xdirection, transform.localScale.y);
+                transform.localScale = scale;
+            }
+            else if (dir.x < 0)
+            {
+                Xdirection = 1;
+                Vector2 scale = new Vector2(Xdirection, transform.localScale.y);
+                transform.localScale = scale;
+            }
+
             if (canAttack && Attack() != null) StartCoroutine(Attack());
         }
     }
@@ -83,18 +99,26 @@ public class EnemyAI : MonoBehaviour
 
     IEnumerator Attack()
     {
-        Debug.Log("Detected");
-        isAttacking = true;
         canAttack = false;
+        isAttacking = true;
+        rb.velocity = Vector2.zero;
 
-        yield return new WaitForSeconds(0.2f);
+        Debug.Log("Detected");
 
-        Collider2D hit = Physics2D.OverlapCircle(AtkTransform.position, AtkRadius, Player);
+        yield return new WaitForSeconds(0.3f);
 
-        if(hit != null)
+        if(PlayerInArea() && m_PlayerLife.isAlive)
         {
             Debug.Log("Hitted");
-            m_PlayerLife.currentLife--;
+
+            if(m_PlayerLife.canBeHitted)
+            m_PlayerLife.DamagePlayer(transform);
         }
+
+        yield return new WaitForSeconds(0.2f);
+        isAttacking = false;
+
+        yield return new WaitForSeconds(0.3f);
+        canAttack = true;
     }
 }

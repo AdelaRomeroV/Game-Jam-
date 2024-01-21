@@ -619,11 +619,11 @@ MonoBehaviour:
   AtkRadius: 0.8
   AtkDelay: 1.2
   isAttacking: 0
-  canAttack: 0
+  canAttack: 1
   Hitting: 0
   Player:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 1152
   Ground:
     serializedVersion: 2
     m_Bits: 8
@@ -707,7 +707,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.25, y: 1.125}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -757,7 +757,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: -657205656, guid: 5ce6a4cae44715e469655f8befea9079, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -777,7 +777,7 @@ Transform:
   m_GameObject: {fileID: 144634835}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -21.89, y: -1.45, z: 0}
+  m_LocalPosition: {x: -26.1, y: -1.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -25991,9 +25991,36 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &997222705 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2303060479129190665, guid: 31aeda64011c35a43b422ca310e97859, type: 3}
+  m_PrefabInstance: {fileID: 1919413496}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b06314e7b27cf7144b830075b72a3d86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &997222706 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 340723957114914418, guid: 31aeda64011c35a43b422ca310e97859, type: 3}
+  m_PrefabInstance: {fileID: 1919413496}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1eb8dfe776a8b3843ade138b9e4176e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1269880228 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4067261406383959891, guid: 31aeda64011c35a43b422ca310e97859, type: 3}
+  m_PrefabInstance: {fileID: 1919413496}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1269880229 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2822113416864074738, guid: 31aeda64011c35a43b422ca310e97859, type: 3}
   m_PrefabInstance: {fileID: 1919413496}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1277349067
@@ -32336,6 +32363,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 867705036480228402, guid: 31aeda64011c35a43b422ca310e97859, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 1887285914659095052, guid: 31aeda64011c35a43b422ca310e97859, type: 3}
       propertyPath: m_Distance
       value: 38.56398
@@ -32360,7 +32391,28 @@ PrefabInstance:
       propertyPath: grappleToAll
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 3334161561807175492, guid: 31aeda64011c35a43b422ca310e97859, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4171065458740247688, guid: 31aeda64011c35a43b422ca310e97859, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7900641487053095682, guid: 31aeda64011c35a43b422ca310e97859, type: 3}
+      propertyPath: mov
+      value: 
+      objectReference: {fileID: 997222706}
+    - target: {fileID: 7900641487053095682, guid: 31aeda64011c35a43b422ca310e97859, type: 3}
+      propertyPath: combat
+      value: 
+      objectReference: {fileID: 997222705}
+    - target: {fileID: 7900641487053095682, guid: 31aeda64011c35a43b422ca310e97859, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1269880229}
+    m_RemovedComponents:
+    - {fileID: 3273519875871946828, guid: 31aeda64011c35a43b422ca310e97859, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

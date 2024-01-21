@@ -251,6 +251,7 @@ MonoBehaviour:
   Speed: 3
   canMove: 1
   jumpForce: 12
+  canJump: 1
   wallSlideSpeed: 1
   wallJumpingTime: 0.05
   wallJumpingDuration: 0.1
@@ -275,13 +276,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b06314e7b27cf7144b830075b72a3d86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scaledObject: {fileID: 0}
   DamageParticles: {fileID: 8639296252201929745, guid: 2d7a7257b738f5145b6cc8c2d3c2db21, type: 3}
   EnemyLayer:
     serializedVersion: 2
     m_Bits: 128
   AttackCheck: {fileID: 7043883629727896513}
   AttackRadius: 0.8
-  hit: 0
+  hitting: 0
 --- !u!114 &7900641487053095682
 MonoBehaviour:
   m_ObjectHideFlags: 0

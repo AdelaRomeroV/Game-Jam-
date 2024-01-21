@@ -16,7 +16,7 @@ public class PlayerCombat : MonoBehaviour
     [Header("Check Collision")]
     [SerializeField] Transform AttackCheck;
     [SerializeField] float AttackRadius;
-    bool canAttack = true;
+    [HideInInspector] public bool canAttack = true;
 
     public bool hitting;
 

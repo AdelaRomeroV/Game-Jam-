@@ -5,7 +5,7 @@ using UnityEngine;
 public class playerMov : MonoBehaviour
 {
     [Header("Components")]
-    [SerializeField] Rigidbody2D rb;
+    [SerializeField] public Rigidbody2D rb;
     [SerializeField] public GameObject scaledObject;
     [HideInInspector] public Animator animator;
     [SerializeField] PlayerLife life;
