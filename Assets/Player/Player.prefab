@@ -276,13 +276,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b06314e7b27cf7144b830075b72a3d86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scaledObject: {fileID: 0}
+  scaledObject: {fileID: 4067261406383959891}
   DamageParticles: {fileID: 8639296252201929745, guid: 2d7a7257b738f5145b6cc8c2d3c2db21, type: 3}
   EnemyLayer:
     serializedVersion: 2
     m_Bits: 128
   AttackCheck: {fileID: 7043883629727896513}
   AttackRadius: 0.8
+  canAttack: 1
   hitting: 0
 --- !u!114 &7900641487053095682
 MonoBehaviour:
@@ -296,8 +297,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 707ead48371842849a8c98a697fe6d6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 2822113416864074738}
+  mov: {fileID: 340723957114914418}
+  combat: {fileID: 2303060479129190665}
   maxlife: 5
   currentLife: 0
+  canBeHitted: 1
 --- !u!231 &1887285914659095052
 SpringJoint2D:
   m_ObjectHideFlags: 0
@@ -548,7 +553,7 @@ Transform:
   m_GameObject: {fileID: 4171065458740247688}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.32299995, y: 0, z: 0}
+  m_LocalPosition: {x: 0.362, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

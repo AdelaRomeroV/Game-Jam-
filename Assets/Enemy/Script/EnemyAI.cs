@@ -1,9 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.Burst.CompilerServices;
-using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -19,13 +15,13 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] float flipTime;
     public float currentTime;
     public int Xdirection = 1;
+    bool flip = true;
 
     [Header("Attack Variables")]
     [SerializeField] float AtkRadius;
     [SerializeField] float AtkDelay;
-    public bool isAttacking;
-    public bool canAttack = true;
-    public bool Hitting;
+    bool isAttacking;
+    bool canAttack = true;
 
     [Header("Collision Variables")]
     [SerializeField] LayerMask Player;
@@ -54,29 +50,44 @@ public class EnemyAI : MonoBehaviour
 
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(AtkTransform.position, AtkRadius);
+
+        Gizmos.color = Color.white;
+        Gizmos.DrawWireSphere(transform.position, 1.5f);
     }
 
     private void Update()
     {
-        if(!isAttacking) Walk();
-
-        if(Vector2.Distance(transform.position, m_Target.transform.position) <= 0.5f)
+        if (Vector2.Distance(transform.position, m_Target.transform.position) > 1.5f)
         {
-            Vector2 dir = transform.position - m_Target.transform.position;
-            if(dir.x > 0)
+            if (!isAttacking)
             {
-                Xdirection = -1;
-                Vector2 scale = new Vector2(Xdirection, transform.localScale.y);
-                transform.localScale = scale;
-            }
-            else if (dir.x < 0)
-            {
-                Xdirection = 1;
-                Vector2 scale = new Vector2(Xdirection, transform.localScale.y);
-                transform.localScale = scale;
-            }
+                Walk();
 
+                m_anim.SetBool("Walking", true);
+            }
+        }
+        else
+        {
             if (canAttack && Attack() != null) StartCoroutine(Attack());
+
+            m_anim.SetBool("Walking", false);
+
+            if (flip)
+            {
+                Vector2 dir = transform.position - m_Target.transform.position;
+                if (dir.x > 0)
+                {
+                    Xdirection = -1;
+                    Vector2 scale = new Vector2(Xdirection, transform.localScale.y);
+                    transform.localScale = scale;
+                }
+                else if (dir.x < 0)
+                {
+                    Xdirection = 1;
+                    Vector2 scale = new Vector2(Xdirection, transform.localScale.y);
+                    transform.localScale = scale;
+                }
+            }
         }
     }
 
@@ -103,22 +114,34 @@ public class EnemyAI : MonoBehaviour
         isAttacking = true;
         rb.velocity = Vector2.zero;
 
-        Debug.Log("Detected");
+        m_anim.SetBool("Attacking", isAttacking);
+        flip = false;
 
-        yield return new WaitForSeconds(0.3f);
 
-        if(PlayerInArea() && m_PlayerLife.isAlive)
+        yield return new WaitForSeconds(0.5f);
+
+        isAttacking = false;
+        m_anim.SetBool("Attacking", isAttacking);
+
+
+        yield return new WaitForSeconds(AtkDelay);
+
+        canAttack = true;
+    }
+
+    public void ConfirmAttack()
+    {
+        if (PlayerInArea() && m_PlayerLife.isAlive)
         {
             Debug.Log("Hitted");
 
-            if(m_PlayerLife.canBeHitted)
-            m_PlayerLife.DamagePlayer(transform);
+            if (m_PlayerLife.canBeHitted)
+                m_PlayerLife.DamagePlayer(transform);
         }
+    }
 
-        yield return new WaitForSeconds(0.2f);
-        isAttacking = false;
-
-        yield return new WaitForSeconds(0.3f);
-        canAttack = true;
+    public void canFlip()
+    {
+        flip = true;
     }
 }
