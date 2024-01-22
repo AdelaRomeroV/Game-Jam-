@@ -72,4 +72,17 @@ public class PlayerLife : MonoBehaviour
 
         canBeHitted = true;
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Cure"))
+        {
+            if(currentLife < maxlife)
+            {
+                currentLife++;
+                ui_lifeBar.PlusLife(1);
+                Destroy(collision.gameObject);
+            }
+        }
+    }
 }

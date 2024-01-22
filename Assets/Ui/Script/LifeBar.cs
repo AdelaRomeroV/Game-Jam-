@@ -1,4 +1,3 @@
-using System.Data;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -41,18 +40,5 @@ public class LifeBar : MonoBehaviour
     public void PlusLife(int times)
     {
         target = current + (100 / maxValue) * times;
-    }
-
-
-    void Testign()
-    {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            SubstractLife();
-        }
-        else if (Input.GetKeyDown(KeyCode.Mouse1))
-        {
-            PlusLife(1);
-        }
     }
 }
