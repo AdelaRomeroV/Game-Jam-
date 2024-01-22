@@ -15,6 +15,7 @@ public class PlayerLife : MonoBehaviour
     public int currentLife;
     [NonSerialized] public bool isAlive = true;
     public bool canBeHitted = true;
+    bool hitted;
 
     private void Awake()
     {
@@ -23,6 +24,8 @@ public class PlayerLife : MonoBehaviour
 
     private void Update()
     {
+        animator.SetBool("Damage", hitted);
+
         if(currentLife <= 0 )
         {
             isAlive = false;
@@ -43,12 +46,14 @@ public class PlayerLife : MonoBehaviour
 
         mov.canMove = false;
         combat.canAttack = false;
+        hitted = true;
 
         currentLife--;
         mov.rb.AddForce(new Vector2(attackDir.x, 2) * 5,ForceMode2D.Impulse);
 
         yield return new WaitForSeconds(0.3f);
 
+        hitted = false;
         mov.canMove = true;
         combat.canAttack = true;
     }
