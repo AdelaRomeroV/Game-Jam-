@@ -300,7 +300,8 @@ MonoBehaviour:
   animator: {fileID: 2822113416864074738}
   mov: {fileID: 340723957114914418}
   combat: {fileID: 2303060479129190665}
-  maxlife: 5
+  ui_lifeBar: {fileID: 0}
+  maxlife: 8
   currentLife: 0
   canBeHitted: 1
 --- !u!231 &1887285914659095052

@@ -8,7 +8,7 @@ public class PlayerLife : MonoBehaviour
     [SerializeField] Animator animator;
     [SerializeField] playerMov mov;
     [SerializeField] PlayerCombat combat;
-    string PLAYER_DEATH = "PlayerDeath";
+    [SerializeField] LifeBar ui_lifeBar;
 
     [Header("Life Variables")]
     public int maxlife;
@@ -17,8 +17,12 @@ public class PlayerLife : MonoBehaviour
     public bool canBeHitted = true;
     bool hitted;
 
+    string PLAYER_DEATH = "PlayerDeath";
+
     private void Awake()
     {
+        ui_lifeBar = GameObject.Find("Fill").GetComponent<LifeBar>();
+
         currentLife = maxlife;
     }
 
@@ -49,6 +53,8 @@ public class PlayerLife : MonoBehaviour
         hitted = true;
 
         currentLife--;
+        ui_lifeBar.SubstractLife();
+
         mov.rb.AddForce(new Vector2(attackDir.x, 2) * 5,ForceMode2D.Impulse);
 
         yield return new WaitForSeconds(0.3f);
@@ -62,7 +68,7 @@ public class PlayerLife : MonoBehaviour
     {
         canBeHitted = false;
 
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(1);
 
         canBeHitted = true;
     }
